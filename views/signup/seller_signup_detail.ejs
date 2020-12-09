@@ -1,0 +1,26 @@
+<form method="POST" action="/users/seller_signup">
+    <div class="container col-md-5" style="margin-top: 3%; margin-bottom : 3%">
+        <h3 style="margin-bottom: 10%">판매자 회원가입</h3>
+        <h5 style="float:left; margin-right: 5%; width: 150px;">아이디 </h5> <input type="id" class="form-control" style="width:40%; margin-bottom: 5%" name='sellerId'/>
+        <h5 style="float:left; margin-right: 5%; width: 150px;">카테고리 </h5>
+
+        <select name="categoryName" class="custom-select d-block" id="country" style="width:40%; margin-bottom:5%" required>
+            <option value="">카테고리를 고르세요...</option>
+            <option value="휴대폰케이스">휴대폰 케이스</option>
+            <option value="비누">비누</option>
+            <option value="캔들">캔들</option>
+            <option value="디퓨저">디퓨저</option>
+            <option value="화장품">화장품</option>
+            <option value="악세사리">악세사리</option>
+            <option value="가방">가방</option>
+            <option value="케이크">케이크</option>
+            <option value="디저트">디저트</option>
+        </select>
+
+        <h5 style="float:left; margin-right: 5%; width: 150px;">비밀번호 </h5> <input type="pw" class="form-control" style="width:40%; margin-bottom: 5%" name='sellerPw'/>
+        <h5 style="float:left; margin-right: 5%; width: 150px;">상점이름 </h5> <input type="storeName" class="form-control" style="width:40%; margin-bottom: 5%" name='storeName'/>
+        <h5 style="float:left; margin-right: 5%; width: 150px;">휴대폰번호 </h5> <input type="Phone" class="form-control" style="width:40%; margin-bottom: 5%"placeholder="***-****-****" name='sellerPhone'/>
+        <h5 style="float:left; margin-right: 5%; width: 150px;">이메일 </h5> <input type="Email" class="form-control" style="width:40%; margin-bottom: 5%" name='sellerEmail'/>
+        <input class="btn peach" type="submit" style="width: 100%" value="완료"/>
+    </div>
+</form>

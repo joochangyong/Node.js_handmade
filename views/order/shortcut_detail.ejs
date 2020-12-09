@@ -1,0 +1,80 @@
+<div class="container-fluid" style="margin-top: 3%; margin-bottom:3%">
+    <div class="row">
+        <div class="col-md-8 offset-2">
+            <h4 style="margin-bottom: 3%">주문 페이지</h4>
+            <table id="mytable" class="table">
+                <thead>
+                    <th>번호</th>
+                    <th>상품명</th>
+                    <th style="width: 15%">가격</th>
+                    <th style="width: 15%">수량</th>
+                </thead>
+                <tbody>
+                    <% for(var i = 0; i < product.length; i++) { %>
+                    <tr>
+                        <td>
+                            <h6><%= i+1 %></h6>
+                        </td>
+                        <td> <a href="#"><img src="../../<%= product[i].productImg%>" class="basketimage" alt="" style="float: left; margin-left: 5%"></a>
+                            <p style="text-align: justify; margin-left: 20%; margin-top: 3%"><a href="#"><%= product[i].productName%></a></p>
+                        </td>
+                        <td>
+                            <p style="margin-top: 10%;"><%= product[i].price%>원</p>
+                        </td>
+                        <td>
+                            <p style="margin-top: 15%;"><%= user.productSum %></p>
+                            <input type="hidden" name="productSum" id="productSum" value="<%= user.productSum %>">
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-8 offset-2">
+        <h5 style="margin-top: 4%">주문 정보</h5>
+        <table id="mytable" class="table">
+            <tbody>
+
+                <tr>
+                    <td>
+                        <h6 style="margin-top: 2%;">배송지</h6>
+                    </td>
+                    <td>
+                        <div>
+                            <select name="address" class="custom-select d-block w-100" id="country" required>
+                                <option value="">주소를 고르세요...</option>
+                                <% for(var i =0; i < address.length; i++) { %>
+                                <option value="<%= address[i].addressNum%>"><%= address[i].zipCode + " | " + address[i].priAddress + " | " + address[i].detAddress%></option>
+                                <% } %>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h6 style="margin-top: 2%">카드</h6>
+                    </td>
+                    <td>
+                        <div>
+                            <select name="card" class="custom-select d-block w-100" id="country" required>
+                                <option value="">카드를 고르세요...</option>
+                                <% for(var i =0; i < card.length; i++) { %>
+                                <option value="<%= card[i].cardNum %>"><%= card[i].cardNum %> | <%= card[i].validity %> | <%= card[i].CVC %></option>
+                                <% } %>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row" style="margin-top: 5%">
+            <div class="col-md-12" style="margin-top: 1%">
+                <h5 style="float: left; margin-top:0.5%;margin-right: 5%" name="orderSum">총 주문 금액 : <%= user.productSum * product[0].price%>원</h5>
+                <input type="hidden" name="orderSum" id="orderSum" value="<%= user.productSum * product[0].price%>">
+                <input type="submit" class="peach btn" style="color:white; float: right; margin-right: 1%" value="주문하기">
+            </div>
+        </div>
+    </div>
+</div>

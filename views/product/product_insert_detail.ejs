@@ -1,0 +1,25 @@
+<form class="form-img" method="POST" action="/product/product_insert" enctype="multipart/form-data">
+    <div style="margin-left:25%; margin-top:3%; margin-bottom:3%">
+        <h3 style="margin-bottom: 3%">상품 등록</h3>
+        <h5 style="float:left; margin-right: 5%; width: 150px;">상품명 </h5> <input type="text" name="productName" class="form-control" style="width:40%; margin-bottom: 2%" />
+        <h5 style="float:left; margin-right: 5%; width: 150px;">가격 </h5> <input type="number" min="1" name="price" class="form-control" style="width:40%; margin-bottom: 2%" />
+        <h5 style="float:left; margin-right: 5%; width: 150px;">재고량 </h5> <input type="number" min="0" name="amount" class="form-control" style="width:40%; margin-bottom: 2%" />
+        <h5 style="float:left; margin-right: 5%; width: 150px;">상품 이미지 </h5> <input type="file" name="fileupload" id="fileupload" class="form-control-file" style="width:40%; margin-bottom: 2%" />
+        <h5 style="float:left; margin-right: 5%; width: 150px;">카테고리 </h5>
+
+        <select name="category" style="width:40%; margin-bottom: 2%" class="custom-select d-block" id="country" required>
+            <option value="">카테고리를 고르세요...</option>
+            <option value="휴대폰케이스">휴대폰 케이스</option>
+            <option value="비누">비누</option>
+            <option value="캔들">캔들</option>
+            <option value="디퓨저">디퓨저</option>
+            <option value="화장품">화장품</option>
+            <option value="악세사리">악세사리</option>
+            <option value="가방">가방</option>
+            <option value="케이크">케이크</option>
+            <option value="디저트">디저트</option>
+        </select>
+        <h5 style="float:left; margin-right: 5%; width: 150px;">상품 상세내용 </h5> <input type="text" name="productInfo" class="form-control" style="width:40%; height: 150px; margin-bottom: 2%" />
+        <input class="btn peach" type="submit" style="width: 58%" value="완료" />
+    </div>
+</form>

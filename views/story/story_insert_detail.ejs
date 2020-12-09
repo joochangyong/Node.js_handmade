@@ -1,0 +1,16 @@
+<form class="form-img" method="POST" action="/story/story_insert" enctype="multipart/form-data">
+    <div style="margin-left:25%; margin-top:3%; margin-bottom:3%">
+        <h3 style="margin-bottom: 3%">스토리 등록</h3>
+        <h5 style="float:left; margin-right: 5%; width: 150px;">제목 </h5> <input type="text" name="storyName" class="form-control" style="width:40%; margin-bottom: 2%" />
+        <h5 style="float:left; margin-right: 5%; width: 150px;">상품 선택 </h5>
+        <select name="productNum" style="width:40%; margin-bottom: 2%" class="custom-select d-block" id="country" required>
+                <option value="">상품을 고르세요...</option>
+                <% for (var i=0; i< product.length; i++) {%>
+                <option value="<%= product[i].productNum %>"><%= product[i].productName %></option>
+                <% } %>
+            </select>
+        <h5 style="float:left; margin-right: 5%; width: 150px;">상품 이미지 </h5> <input type="file" id="fileupload" name="fileupload" class="form-control-file" style="width:40%; margin-bottom: 2%" >
+        <h5 style="float:left; margin-right: 5%; width: 150px;">상품 상세내용 </h5> <input type="text" name="storyInfo" class="form-control" style="width:40%; height: 150px; margin-bottom: 2%" />
+        <input class="btn peach" type="submit" style="width: 58%" value="완료" />
+    </div>
+</form>

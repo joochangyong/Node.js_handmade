@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-fixed-top" style="background-color :rgb(235,202,179); ">
+    <div class="col">
+        <div class="pull-right" style="float: right; float: right; width: 20%; height: auto; ">
+            <% if(user.userid != null || seller.sellerId != null) { %>
+            <a href="/users/logout" style="margin-left: 50%;">로그아웃</a>
+            <% } else { %>
+            <a href="/users/login">로그인</a>
+            <a href="/users/client_signup" style="margin-left: 10%;">회원가입</a>
+            <a href="/users/seller_signup" style="margin-left: 10%;">입점문의</a>
+            <% } %>
+        </div>
+        <div class="container-fluid" style="margin-left: 20%; margin-top: 1%">
+            <div class="col-md-2" style="float: left;">
+                <a class="navbar-brand" href="/">
+                    <!-- 메인 이미지 -->
+                    <img alt="Brand" src="..\..\images\brand.png" style="width: 80%; height: 50%; margin-left:20%">
+                </a>
+            </div>
+            <form action="/product/product_search" method="POST">
+                <!-- 검색 창 + 검색버튼 -->
+                <div class="form-group has-success has-feedback" style="padding-top:0.5%;">
+                    <input type="text" class="form-control" style="width: 30%; float: left;" name="keyWord">
+                    <input class="btn btn-default gray1" style="margin-left: 1%;" type="submit" value="검색">
+                </div>
+            </form>
+        </div>
+        <div style="width: 100%; font-size: larger;" class="container col-md-12">
+
+            <div class="dropdown col-3">
+                <!-- 인테리어 드롭다운 -->
+                <button class="btn dropdown-toggle" style=" float: left; font-size:large; margin-right: 3%" type="button" id="dropdownMenu2" data-toggle="dropdown">
+                    카테고리
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2" style="margin-left:3%; margin-top:10%;">
+                    <a href="/"><button class="dropdown-item" value="가방" type="button">가방</button></a>
+                    <a href="/"><button class="dropdown-item" value="디저트" type="button">디저트</button></a>
+                    <a href="/"><button class="dropdown-item" value="디퓨저" type="button">디퓨저</button></a>
+                    <a href="/"><button class="dropdown-item" value="비누" type="button">비누</button></a>
+                    <a href="/"><button class="dropdown-item" value="악세사리" type="button">악세사리</button></a>
+                    <a href="/"><button class="dropdown-item" value="캔들" type="button">캔들</button></a>
+                    <a href="/"><button class="dropdown-item" value="케이크" type="button">케이크</button></a>
+                    <a href="/"><button class="dropdown-item" value="화장품" type="button">화장품</button></a>
+                    <a href="/"><button class="dropdown-item" value="휴대폰케이스" type="button">휴대폰케이스</button></a>
+                </div>
+            </div>
+
+            <a href="/" style="margin-right: 1%">홈</a>
+            <a href="/story/story_board" style="margin-right: 1%">스토리</a>
+            <a href="/product/best_product">인기작품</a>
+
+            <!-- 오른쪽 버튼 친구들 -->
+            <div class="pull-right" style="float: right; width: 20%; height: auto">
+                <% if(user.userid != null && seller.sellerId == null) { %>
+                <a href="/mypage/client_mypage/<%= user.userid %>" style="margin-right: 10%; margin-left: 6%">마이페이지</a>
+                <a href="/basket">장바구니</a>
+                <% } else if (user.userid == null && seller.sellerId != null) {%>
+                <a href="/mypage/seller_mypage" style="margin-right: 10%; margin-left: 45%">마이페이지</a>
+                <% } else { %>
+                <a href="/users/login" style="margin-right: 10%; margin-left: 15%">마이페이지</a>
+                <a href="/users/login">장바구니</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</nav>

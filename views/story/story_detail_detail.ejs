@@ -1,0 +1,24 @@
+
+<div style="margin-left: 33%; margin-top: 4%">
+    <div style="width: 100%; height: 570px;">
+        <h3 style="margin-bottom: 4%"><%= story[0].storyName %></h3>
+        <div style="width:45%; float: left;">
+            <img src="../../<%=story[0].storyImg%>" alt="#" style="width:500px; height: 500px;">
+        </div>
+    </div>
+    <div class="row" style="width: 100%; margin-top: 3%">
+        <h4 style="width:15%; margin-left: 2%">스토리 내용</h4>
+        <div style="width: 33%;">
+            <p> <%= story[0].storyInfo %></p>
+        </div>
+    </div>
+    <% if(seller.sellerId == null) { %>
+    <input onclick="location.href='/product/product_detail/<%= story[0].productNum%>'" class="btn peach" type="button" value="구매하러 가기" style="margin-left: 36%; margin-bottom: 3%">
+    <% } %>
+    <% if(seller.sellerId != null && seller.sellerId == story[0].sellerId) { %>
+    <a href="/story/story_update/<%= story[0].storynum%>" style="margin-left: 30%;"><input class="btn peach" type="button" value="수정하기" style=" margin-bottom: 3%"></a>
+    <a href="/story/delete/<%= story[0].storynum%>"style="margin-left: 2%;"> <input class="btn peach" type="button" value="삭제하기" style=" margin-bottom: 3%"></a>
+    <% } %>
+</div>
+
+

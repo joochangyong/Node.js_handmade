@@ -1,0 +1,61 @@
+@font-face { 
+  font-family: 'SCDream3'; 
+  src: url(../font/SCDream3.otf) format('truetype'); 
+}
+
+html, body {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0; 
+  font-family: SCDream3;
+}
+
+/* 
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+} */
+
+.linechange{
+  word-break:break-all;
+}
+
+.mainblue{
+  background-color :rgb(222,235,247);
+}
+
+.blue1{
+  background-color :rgb(157,195,230);
+}
+
+.peach{
+  background-color :rgb(235,202,179); 
+}
+
+.colorblue1{
+  color: rgb(157,195,230);
+}
+
+a {
+  color:  rgb(0,0,0);
+}
+a:hover{
+  color:  rgb(100,100,100); text-decoration: none;
+}
+
+h5 {
+  color:  rgb(0,0,0);
+}
+
+th {
+  text-align: center;
+}
+
+td {
+  text-align: center;
+}
+
+.basketimage{
+  width: 10%;
+  height: auto;
+}

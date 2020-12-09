@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <div class="col-md-8 offset-4">
+        <form class="form-signin" method="post" action="/mypage/seller_update">
+            <h3 style="margin-top: 3%"><%= sellerinfo[0].storeName %>님 정보 수정</h3></br>
+            <h5 style="margin-top: 2%; float: left; margin-right: 3%">상점명</h5>
+            <input type="text" name="storeName" value="<%= sellerinfo[0].storeName %>" class="form-control" style="width: 30%; float: left; margin-top: 1%"></br></br></br>
+            <h5 style="margin-top: 2%; float: left; margin-right: 3%">비밀번호</h5>
+            <input type="text" name="sellerPw" value="<%= sellerinfo[0].sellerPw %>" class="form-control" style="width: 30%; float: left; margin-top: 1%"></br></br></br>
+            <h5 style="margin-top: 2%; float: left; margin-right: 3%">전화번호</h5>
+            <input type="text" name="sellerPhone" value="<%= sellerinfo[0].sellerPhone %>" class="form-control" style="width: 30%; float: left; margin-top: 1%"></br></br></br>
+            <h5 style="margin-top: 2%; float: left; margin-right: 3%">이메일</h5>
+            <input type="text" name="sellerEmail" value="<%= sellerinfo[0].sellerEmail %>" class="form-control" style="width: 30%; float: left; margin-top: 1%"></br></br></br>
+            <input type="submit" class="btn peach" style="width: 41%; margin-bottom: 5%" value="수정완료">
+        </form>
+    </div>
+</div>

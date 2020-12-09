@@ -1,0 +1,22 @@
+<div class="col-lg-10">
+    <div style="width: 100%; float: left;">
+        <h2 style="margin-left: 21%; float:left; margin-top:3%">실시간 스토리</h2><br><br><br>
+        <% if(user.userid == null && seller.sellerId != null) { %>
+        <a style="float: right;" href="/story/story_insert"><input type="button" class="btn peach" value="스토리등록" ></a><br><br>
+        <% } %>
+        <div class="row" style="margin-top: 3%; margin-left: 20%">
+            <% for(var i = 0; i < story.length; i++) { %>
+            <div class="col-lg-3 col-md-4 mb-4">
+                <div class="card h-100">
+                    <a href="/story/story_detail/<%= story[i].storynum%>"><img class="card-img-top" src="../../<%=story[i].storyImg%>" alt="#"></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="/story/story_detail/<%= story[i].storynum%>"><%= story[i].storyName %></a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,144 @@
+<div style="margin-left: 25%; margin-top: 4%">
+    <div style="width: 100%; height: 550px;">
+
+        <div style="width:45%; float: left;">
+            <img src="../../<%=item[0].productImg%>" alt="#" style="width:490px; height: 490px;">
+        </div>
+
+        <div style="width:40%; float: left;">
+            <h5 style="margin-bottom: 10%"><%=item[0].storyName%></h5>
+            <h5 style="margin-bottom: 10%"><%=item[0].productName%></h5>
+            <h5 style="margin-bottom: 10%">가격 : <%=item[0].price%>원</h5>
+            <h5 style="margin-bottom: 10%">리뷰 <%=item[0].star_avg%>점</h5>
+            <h5 style="margin-bottom: 10%">재고 : <%= item[0].amount %> 개</h5>
+            <div style="width: 100%">
+                <% if(user.userid != null) { %>
+                <h5 style="float: left">수량 </h5>
+                <form class="form-signin" method="post" action="/basket/addBasket/<%= item[0].productNum %>">
+                <input type="number" class="form-control" value="1"  min='1' max='<%= item[0].amount %>' name='basketCount' style="width:20%; height: 20%; margin-left: 3%; float: left;" />
+                <input type="button" class="btn" style="width:10%; margin-bottom: 10%" value="입력" />
+                <% } %>
+            </div>
+
+            <% if(seller.sellerId == item[0].sellerId) { %>
+            <div style="width: 100%; margin-bottom: 5%">
+                <input type="button" onclick="location.href='/product/delete/<%= item[0].productNum%>'" class="btn peach" style="color: white" value="삭제하기" />
+                <input type="button" onclick="location.href='/product/product_update/<%= item[0].productNum%>'" class="btn peach" style="float: left; margin-right: 5%; color: white" value="수정하기" />
+            </div>
+            <% } else { %>
+            <div style="width: 100%; margin-bottom: 5%">
+                <% if (item[0].amount != 0) { %>
+                    <% if (user.userid == null && seller.sellerId == null) { %>
+                    <input type="button" onclick="location.href='/users/login'" class="btn peach" style="color: white" value="바로구매" />
+                    <input type="button" onclick="location.href='/users/login'" class="btn peach" style="float: left; margin-right: 5%; color: white" value="장바구니" />
+                    <% } else if (user.userid != null && seller.sellerId == null) { %>
+                    <input type="submit" class="btn peach" style="color: white" value="바로구매" />
+                    <input type="submit" name="basket" class="btn peach" style="float: left; margin-right: 5%; color: white" value="장바구니" />
+                    </form>
+                    <% } else { %>
+                    <input type="button" onclick="location.href='/users/login'" class="btn peach" style="color: white" value="바로구매" />
+                    <input type="button" onclick="location.href='/users/login'" class="btn peach" style="float: left; margin-right: 5%; color: white" value="장바구니" />
+                    <% } %>
+                <% }else {%>
+                    <input type="button" value="품절" class="btn btn-outline-secondary" style="width : 50%" disabled/>
+                <% } %>
+            </div>
+            <% } %>
+        </div>
+    </div>
+
+    <hr style="width: 70%; margin-bottom: 5%; float: left">
+
+    <div class="row" style="width: 100%;">
+
+        <h4 style="width:15%; float: left; margin-left: 3%">상세정보</h4>
+        <div style="width: 50%; float: left">
+            <p><%= item[0].productInfo%></p>
+        </div>
+
+    </div>
+</div>
+
+
+
+<% for(var i = 0; i< order_people.length; i++){ %>
+<% if(order_people[i].id==user.userid) { %>
+<form action="/product/product_review" method="POST">
+    <div class="col-10" style="margin-left: 25%">
+        <input type="hidden" name="productNum" value="<%= item[0].productNum%>" />
+        <hr style="width: 70%; margin-bottom: 5%; float: left"><br> <br><br> <br>
+        <h4>리뷰 등록</h4>
+        <h5 style="margin-left: 15%; margin-right: 4%; float: left;">별점</h5>
+
+        <div class="row btn-group btn-group-toggle" data-toggle="buttons"
+                    style="width:30%; float: left;">
+        <% for(var j = 1; j<=5; j++) {%>
+            <label class="btn btn-outline-secondary">
+                <input type="radio" name="star" value="<%= j %>"> <%= j %>
+            </label>
+        <% } %>
+        </div>
+        <br><br><br><br>
+
+        <h5 style="margin-left: 15%; margin-right: 4%; float: left;">상세내용</h5>
+        <input name="review_detail" type="text" class="form-control" style="width:44%; height:100px;" />
+        <input type="submit" class="btn btn-outline-secondary" style="margin-left:65%; margin-top:3%" value="등록" />
+    </div>
+</form>
+<% } %>
+<% } %>
+
+<br> <br>
+<div class="col-10" style="margin-left: 25%">
+    <hr style="width: 70%; float: left">
+    <br> <br> <br>
+    <div style="margin-bottom: 5%">
+        <h4>리뷰 조회</h4>
+
+        <table id="mytable" style="margin-left: 1%; margin-top:3%" class="table col-8">
+            <thead class="brown6 gray2">
+                <th>번호</th>
+                <th>아이디</th>
+                <th>작성일</th>
+                <th>별점</th>
+            </thead>
+
+            <% for(var a=0; a< review.length; a++) { %>
+
+            <tbody>
+                <tr>
+                    <td style="vertical-align: middle;">
+                        <h6><%= a+1 %>.</h6>
+                    </td>
+                    <td style="vertical-align: middle;">
+                        <h6><%= review[a].id %></h6>
+                    </td>
+                    <td style="vertical-align: middle; ">
+                        <h6><%= review[a].reviewDate %></h6>
+                    </td>
+                    <td style="vertical-align: middle;">
+                            <%= review[a].star %>
+                    </td>
+                </tr>
+                <tr>
+                    <% if(user.userid==review[a].id) { %>
+                        <td colspan="3" style="text-align:left; margin-left: 10%">
+                            <h6 style="margin-left: 6%">상세정보 : <%= review[a].reviewInfo %></h6>
+                        </td>
+                        <td>
+                            <a href="/product/review_update/<%= item[0].productNum %>"><input type="button" class="btn btn-outline-secondary" value="수정" /></a>
+                            <a href="/product/review_delete/<%= item[0].productNum %>"><input type="button" class="btn btn-outline-secondary" value="삭제" /></a>
+                        </td>
+                        <% } else{ %>
+                            <td colspan="4" style="text-align:left; margin-left: 10%">
+                                    <h6 style="margin-left: 6%">상세정보 : <%= review[a].reviewInfo %></h6>
+                                </td>
+                                <% } %>
+                    </tr>
+            </tbody>
+            <% } %>
+
+        </table>
+    </div>
+</div>
+
